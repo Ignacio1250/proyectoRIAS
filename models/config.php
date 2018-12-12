@@ -10,7 +10,7 @@ $start= new Query();
 
 // var_dump($res2);
 
-$rest2=$start->saveData('prueba', 'cheko', 'rosas', 'Romero', '2721458764', 'Mi casa', '123M45', 'prueeba@gmail.com');
+$rest2=$start->saveData('prueba', 'cheko', 'rosas', 'Romero', '2721458764', 'Mi casa', '123M45', 'mail@mail.com');
 
 var_dump($rest2);
 
