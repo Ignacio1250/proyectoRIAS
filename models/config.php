@@ -6,7 +6,7 @@ $start= new Query();
 // $res=$start->search('test','name','Juan');
 // $restall=$start->searchall('autos');
 
-$res2=$start->getAutos();
+$res2=$start->login('s@gmail.com','holamundo');
 
 var_dump($res2);
 

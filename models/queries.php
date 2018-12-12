@@ -21,7 +21,6 @@ class Query extends Connection{
     }
 
     public function getAutos(){
-        $autos= new Autos();
 
         $respuesta=$this->searchall("autos");
         $arrayautos= array();
@@ -30,6 +29,22 @@ class Query extends Connection{
         }
         return $arrayautos;
     }
+
+    function login($email, $password){
+
+        $username = $this->search('users','email',$email);
+
+        foreach ($username as $data){
+            $email2=$data["email"];
+            $pass=$data["contrasena"];
+        }
+
+        if(!isset($email2) || !isset($pass)){
+            return false;
+        }
+        return ($email2 == $email) && ($pass == $password); 
+    }
+
 }
 
 
