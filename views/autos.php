@@ -1,5 +1,9 @@
 <?php
 require_once('../header.html');
+require_once('../models/Connection.php');
+$query= new Connection();
+$autos=$query->getAutos();
+
 ?>
 </ul>
 </nav>
@@ -14,15 +18,18 @@ require_once('../header.html');
     <th>$ Renta al día</th>
 </thead>
 <tbody>
-    <tr>
-        <td>Nike</td>
-        <td>Nissan</td>
-        <td>123123</td>
-        <td>6</td>
-        <td>rojo</td>
-        <td>123</td>
-    </tr>
-    <tr></tr>
+    <?php
+    foreach($autos as $auto){
+        echo '<tr>';
+        echo '<td>'.$auto['marca'].'</td>';
+        echo '<td>'.$auto['modelo'].'</td>';
+        echo '<td>'.$auto['placas'].'</td>';
+        echo '<td>'.$auto['capacidad'].'</td>';
+        echo '<td>'.$auto['color'].'</td>';
+        echo '<td>'.$auto['montorentadia'].'</td>';
+        echo '</tr>';
+    }
+    ?>
 </tbody>
 </table>
 </div>
