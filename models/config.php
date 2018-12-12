@@ -6,9 +6,13 @@ $start= new Query();
 // $res=$start->search('test','name','Juan');
 // $restall=$start->searchall('autos');
 
-$res2=$start->login('s@gmail.com','holamundo');
+// $res2=$start->login('s@gmail.com','holamundo');
 
-var_dump($res2);
+// var_dump($res2);
+
+$rest2=$start->saveData('prueba', 'cheko', 'rosas', 'Romero', '2721458764', 'Mi casa', '123M45', 'prueeba@gmail.com');
+
+var_dump($rest2);
 
 // foreach($res as $resul){
 //     echo 'Primer consulta<br>';

@@ -45,8 +45,30 @@ class Query extends Connection{
         return ($email2 == $email) && ($pass == $password); 
     }
 
-}
+    function saveData($contraseña, $nombre, $app, $apm, $telcasa, $direccion, $licencia, $email){
 
+        parent::__construct();
+        $rest=$this->dbh->prepare("SELECT * FROM users WHERE email='$email'");
+        $rest->execute();
+
+        foreach ($rest as $re){
+            $email2=$re["email"];
+        }
+
+        if(is_null($rest) || !isset($email2) == $email){
+           
+            $rest=$this->dbh->prepare(
+                "INSERT INTO `users` (`contrasena`, `nombre`, `app`, `apm`, `telefonocasa`, `direccion`, `licencia`, `estatus`, `email`) 
+                VALUES ('$contraseña', '$nombre', '$app', '$apm', '$telcasa', '$direccion', '$licencia', 'deseable', '$email');");
+            $rest->execute();
+            parent::disconnected();
+                return true;
+        }else{
+            parent::disconnected();
+            return false;
+        }
+    }
+}
 
 
 ?>
