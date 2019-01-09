@@ -17,12 +17,13 @@ $retValue = $statement->fetchAll();
 return $retValue;
 }
 
-public function login($username, $password){
-    $statement = $this->con->prepare("SELECT * FROM users where email='$username' and contrasena='$password'");
+public function login($username, $password, $table){
+    $statement = $this->con->prepare("SELECT * FROM $table where email='$username' and contrasena='$password'");
     $statement->execute();
     $retValue = $statement->fetchAll();
  return sizeof($retValue);
 }
+
 
 function saveData($contraseña, $nombre, $app, $apm, $telcasa, $direccion, $licencia, $email){
 
@@ -47,5 +48,49 @@ function saveData($contraseña, $nombre, $app, $apm, $telcasa, $direccion, $lice
     }
 }
 
+function saveDataCar($placa, $modelo, $marca, $capacidad, $color, $monto, $caracteristicas, $imagen){
+
+    $rest=$this->con->prepare("SELECT * FROM autos WHERE placas='$placa'");
+    $rest->execute();
+
+    foreach ($rest as $re){
+        $placas=$re["email"];
+    }
+
+    if(is_null($rest) || !isset($placas) == $placa){
+       
+        $content = file_get_contents($imagen);
+        $codificado = base64_encode($content);
+
+        $rest=$this->con->prepare(
+            "INSERT INTO `autos` (`placas`, `modelo`, `marca`, `capacidad`, `color`, `montorentadia`, `estatus`, `caracteristicas`, `imagen`) 
+            VALUES ('$placa', '$modelo', '$marca', '$capacidad', '$color', '$monto', 'enable', '$caracteristicas', '$codificado');");
+        $rest->execute();
+    
+            return true;
+    }else{
+        return false;
+    }
+
+}
+
+function getDataCar($placa){
+
+    $sql=$this->con->prepare("SELECT * FROM autos WHERE placas=:placa");
+    $query= $pdo->prepare($sql);
+    $query->execute([
+    'placa'=> $placa
+    ]);
+    $row=$query->fetch(PDO::FETCH_ASSOC);
+
+    if(!is_null($row)){
+        return $row['imagen'];
+
+    }else{
+        return false;
+    }
+
+
+}
 }
 
