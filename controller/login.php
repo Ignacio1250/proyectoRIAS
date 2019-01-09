@@ -10,7 +10,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']) ){
             $logueado='usuario o contraseña invalidos';
         header("Location: ../views/login.php?logueado=.$logueado.");
         }else{
-            header("Location: ../views/addAutos.php");
+            header("Location: ../views/carRegister.php");
         }
     }else{
         header("Location: ../views/autos.php");

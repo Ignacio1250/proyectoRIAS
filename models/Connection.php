@@ -48,7 +48,7 @@ function saveData($contraseña, $nombre, $app, $apm, $telcasa, $direccion, $lice
     }
 }
 
-function saveDataCar($placa, $modelo, $marca, $capacidad, $color, $monto, $caracteristicas, $imagen){
+function saveDataCar($placa, $modelo, $marca, $capacidad, $color, $monto, $caracteristicas,$imagen){
 
     $rest=$this->con->prepare("SELECT * FROM autos WHERE placas='$placa'");
     $rest->execute();
