@@ -12,12 +12,7 @@ $("input").mouseenter(function(){
     $("input").mouseleave(function(){
         $(this).css("background-color","white");
         });
-$("#imagen").mouseenter(function(){
-$(this).css("background-color","green");
-});
-$("#imagen").mouseleave(function(){
-    $(this).css("background-color","transparent");
-    });
+
 
 });
 
@@ -35,14 +30,13 @@ function getPreview(param){
         , modal: true
     });
 
-    var llamada=$.getJSON(
+    var llamada=$.get(
         '../controller/getDataCar.php', //URL
         { //Datos de envío
             placa : param
         }, 
         function(datos) { //trabajo a realizar en caso de éxito
-           
-                $('#preview').append("<img src='data:image/jpg;base64,"+datos+"'/>");
+                $('#preview').html("<img src='"+datos+"' with='200' height='200'/>");
         });
             
         

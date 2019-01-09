@@ -3,7 +3,7 @@ include_once('../models/Connection.php');
 $con = new Connection();
 
 if(isset($_POST['placa'])){
-
+    
     $caracteristicas='[';
     foreach ($_POST['caracteristicas'] as $rest){
         $caracteristicas=$caracteristicas.$rest.',';
@@ -11,7 +11,7 @@ if(isset($_POST['placa'])){
 
     $caracteristicas = trim($caracteristicas, ',');
     $caracteristicas=$caracteristicas.']';
-
+  
     if($con->saveDataCar($_POST['placa'], $_POST['modelo'],$_POST['marca'],$_POST['capacidad'],
     $_POST['color'],$_POST['monto'],$caracteristicas,$_POST['imagen'])){
         $message='seguardaron los datos correctamente';

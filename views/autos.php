@@ -42,8 +42,8 @@ $autos=$query->getAutos();
 		<script type="text/javascript" src="../jslib/jquery-3.3.1.js">
 		</script>
 		<!-- Inclusión de biblioteca jQueryUI -->
-        <script type="text/javascript" src="../jslib/jquery-ui-custom/jquery-ui.js">
-        <script type="text/javascript" src="../js/lib.js">
+        <script type="text/javascript" src="../jslib/jquery-ui-custom/jquery-ui.js"></script>
+        <script type="text/javascript" src="../js/lib.js"></script>
 <?php
 require_once('../footer.html');
 ?>

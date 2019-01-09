@@ -5,7 +5,7 @@ require_once('../header.html');
 </nav>
 <div class="formregistro">
 <img class="registro" src="../img/car.png" width="80px" heigth="80px">
-<form method="POST" action="../controller/dataSaveCar.php">
+<form method="POST" action="../controller/dataSaveCar.php" enctype="multipart/form-data">
 
 <div class="titulosregcar">
     <p>Placas</p>
@@ -28,7 +28,7 @@ require_once('../header.html');
 <input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="automatico"> Automatico
 <input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="seguros"> Seguros Elect.
 <input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="usb"> Usb
-<input required class="registro" type="file" name="imagen" id="imagen" placeholder="imagen">
+<input required class="registro" type="text" name="imagen" id="imagen" placeholder="imagen">
 <button type="submit" class="registro">Registrar</button>
 </div>
 </form>

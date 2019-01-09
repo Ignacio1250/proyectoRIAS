@@ -56,15 +56,13 @@ function saveDataCar($placa, $modelo, $marca, $capacidad, $color, $monto, $carac
     foreach ($rest as $re){
         $placas=$re["email"];
     }
-
     if(is_null($rest) || !isset($placas) == $placa){
        
-        $content = file_get_contents($imagen);
-        $codificado = base64_encode($content);
+        
 
         $rest=$this->con->prepare(
             "INSERT INTO `autos` (`placas`, `modelo`, `marca`, `capacidad`, `color`, `montorentadia`, `estatus`, `caracteristicas`, `imagen`) 
-            VALUES ('$placa', '$modelo', '$marca', '$capacidad', '$color', '$monto', 'enable', '$caracteristicas', '$codificado');");
+            VALUES ('$placa', '$modelo', '$marca', '$capacidad', '$color', '$monto', 'enable', '$caracteristicas', '$imagen');");
         $rest->execute();
     
             return true;
@@ -77,11 +75,10 @@ function saveDataCar($placa, $modelo, $marca, $capacidad, $color, $monto, $carac
 function getDataCar($placa){
 
     $sql=$this->con->prepare("SELECT * FROM autos WHERE placas=:placa");
-    $query= $pdo->prepare($sql);
-    $query->execute([
+    $sql->execute([
     'placa'=> $placa
     ]);
-    $row=$query->fetch(PDO::FETCH_ASSOC);
+    $row=$sql->fetch(PDO::FETCH_ASSOC);
 
     if(!is_null($row)){
         return $row['imagen'];
