@@ -3,6 +3,18 @@ require_once('../header.html');
 require_once('../models/Connection.php');
 $query= new Connection();
 $autos=$query->getAutos();
+session_start();
+if(isset($_SESSION['user'])){
+    if($_SESSION['user']=='admin'){
+        echo '<li><a class="menu" href="./carRegister.php">Registrar Autos</a></li>';
+        echo '<li><a class="menu" href="../controller/Logout.php">Logout</a></li>';
+        
+    }else if($_SESSION['user']=='common'){
+        echo '<li><a class="menu" href="../controller/Logout.php">Logout</a></li>';   
+    }
+}else{
+    header("Location: ../views/login.php");
+}
 
 ?>
 </ul>
@@ -28,7 +40,7 @@ $autos=$query->getAutos();
         echo '<td>'.$auto['capacidad'].'</td>';
         echo '<td>'.$auto['color'].'</td>';
         echo '<td>'.$auto['montorentadia'].'</td>';
-        echo "<td><input type='button' value='Saluda' onclick='getPreview(".$auto['placas'].");'/></td>";
+        echo "<td><input type='button' class='ui-button ui-widget ui-corner-all' value='Previsualizar' onclick='getPreview(".$auto['placas'].");'/></td>";
         echo '</tr>';
     }
     echo "<tr><td colspan='7'><div id='preview' title='preview'></td></tr>";

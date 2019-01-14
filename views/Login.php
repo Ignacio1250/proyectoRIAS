@@ -2,6 +2,7 @@
 include_once('../header.html');
 
 ?>
+<li><a class="logout" href="./Login.php">Login</a></li>
   </ul>
     </nav>
     <?php
