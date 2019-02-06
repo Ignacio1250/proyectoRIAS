@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2018 a las 07:03:02
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Tiempo de generación: 14-01-2019 a las 16:58:06
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,9 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `idadmin` int(11) NOT NULL,
-  `usuario` text NOT NULL,
+  `email` text NOT NULL,
   `contrasena` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `admin`
+--
+
+INSERT INTO `admin` (`idadmin`, `email`, `contrasena`) VALUES
+(0, 'pruebas@gmail.com', 'Holamundo1250'),
+(1, 'prueba@gmail.com', 'Holamundo1250');
 
 -- --------------------------------------------------------
 
@@ -46,16 +56,18 @@ CREATE TABLE `autos` (
   `color` text NOT NULL,
   `montorentadia` float NOT NULL,
   `estatus` text NOT NULL,
-  `caracteristicas` varchar(1000) NOT NULL
+  `caracteristicas` varchar(1000) NOT NULL,
+  `imagen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `autos`
 --
 
-INSERT INTO `autos` (`placas`, `modelo`, `marca`, `capacidad`, `color`, `montorentadia`, `estatus`, `caracteristicas`) VALUES
-(12123122, 'jsdfksd-as', 'ds-sdfs', 5, 'blue', 120.3, 'enable', 'dfasfdf'),
-(12123123, 'jsdfksd-df', 'sd-sdfs', 12, 'red', 124.3, 'enable', 'dfasfdf');
+INSERT INTO `autos` (`placas`, `modelo`, `marca`, `capacidad`, `color`, `montorentadia`, `estatus`, `caracteristicas`, `imagen`) VALUES
+(123, 'camaro', 'chevrolet', 4, 'oscuro', 123, 'enable', '[clima,usb]', 'https://i.pinimg.com/originals/8b/29/3a/8b293a344b873daf87aa225c8203c149.jpg'),
+(123123, '2018', 'mustang', 4, 'oscuro', 123, 'enable', '[clima,automatico,seguros,usb]', 'https://cochesclasicosdehoy.files.wordpress.com/2013/10/1965_ford_mustang_fastback_concept-01.jpg?w=1024'),
+(99999999, 'mustang', 'ford', 4, 'rojo', 124, 'enable', '[clima,automatico,seguros,usb]', 'https://autoproyecto.com/wp-content/uploads/2018/08/Los-mejores-comerciales-de-autos-cl%C3%A1sicos.jpg');
 
 -- --------------------------------------------------------
 
@@ -136,6 +148,7 @@ ALTER TABLE `users`
 ALTER TABLE `userautos`
   ADD CONSTRAINT `userautos_ibfk_2` FOREIGN KEY (`placas`) REFERENCES `autos` (`placas`),
   ADD CONSTRAINT `userautos_ibfk_3` FOREIGN KEY (`email`) REFERENCES `users` (`email`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

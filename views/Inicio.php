@@ -1,7 +1,19 @@
 <?php
 include_once('../header.html');
+session_start();
+if(!isset($_SESSION['user'])){
+echo '<li><a class="logout" href="./Login.php">Login</a></li>';
+}else{
+    if($_SESSION['user']=='admin'){
+        echo '<li><a class="menu" href="./carRegister.php">Registrar Autos</a></li>';
+        echo '<li><a class="menu" href="../controller/Logout.php">Logout</a></li>';
+        
+    }else if($_SESSION['user']=='common'){
+        echo '<li><a class="menu" href="../controller/Logout.php">Logout</a></li>';   
+    }
+    
+}
 ?>
-<li><a class="logout" href="./Login.php">Login</a></li>
 </ul>
 </nav>
 <?php

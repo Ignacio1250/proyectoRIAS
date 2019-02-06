@@ -885,7 +885,7 @@ body .ui-tooltip {
 ----------------------------------*/
 .ui-widget {
 	font-family: Verdana,Arial,sans-serif;
-	font-size: 1em;
+	font-size: .5em;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -898,7 +898,7 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	border: 1px solid #c5dbec;
+	border: 1px solid  #c5dbec;
 }
 .ui-widget-content {
 	border: 1px solid #a6c9e2;
@@ -930,9 +930,9 @@ works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
 	border: 1px solid #c5dbec;
-	background: #dfeffc url("images/ui-bg_glass_85_dfeffc_1x400.png") 50% 50% repeat-x;
+	background: #038dff url("images/ui-bg_glass_85_dfeffc_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
-	color: #2e6e9e;
+	color: #9e442e;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -941,7 +941,7 @@ a.ui-button,
 a:link.ui-button,
 a:visited.ui-button,
 .ui-button {
-	color: #2e6e9e;
+	color: #1cf509;
 	text-decoration: none;
 }
 .ui-state-hover,

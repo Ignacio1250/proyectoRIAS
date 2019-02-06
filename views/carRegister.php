@@ -1,5 +1,17 @@
 <?php
 require_once('../header.html');
+session_start();
+?>
+<?php
+if(isset($_SESSION['user'])){
+    if($_SESSION['user']=='admin'){
+        echo '<li><a class="menu" href="./carRegister.php">Registrar Autos</a></li>';
+        echo '<li><a class="menu" href="../controller/Logout.php">Logout</a></li>';
+        
+    }
+}else{
+    header("Location: ../views/login.php");
+}
 ?>
 </ul>
 </nav>
@@ -24,11 +36,11 @@ require_once('../header.html');
 <input required class="registro" type="text" name="capacidad" id="capacidad" placeholder="capacidad">
 <input required class="registro" type="text" name="color" id="color" placeholder="color">
 <input required class="registro" type="text" name="monto" id="monto" placeholder="monto de renta">
-<input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="clima"> Clima
-<input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="automatico"> Automatico
-<input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="seguros"> Seguros Elect.
-<input required class="caracteristicas" type="checkbox" name="caracteristicas[]" value="usb"> Usb
-<input required class="registro" type="text" name="imagen" id="imagen" placeholder="imagen">
+<input  class="caracteristicas" type="checkbox" name="caracteristicas[]" value="clima"> Clima
+<input  class="caracteristicas" type="checkbox" name="caracteristicas[]" value="automatico"> Automatico
+<input  class="caracteristicas" type="checkbox" name="caracteristicas[]" value="seguros"> Seguros Elect.
+<input  class="caracteristicas" type="checkbox" name="caracteristicas[]" value="usb"> Usb
+<input  class="registro" type="text" name="imagen" id="imagen" placeholder="imagen">
 <button type="submit" class="registro">Registrar</button>
 </div>
 </form>
