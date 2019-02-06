@@ -23,7 +23,7 @@ Ext.onReady(function(){
         renderTo: Ext.getBody(),
         boddyPadding: 5,
         width: 700,
-        url: '../controler/',
+        url: '../controller/controller.php',
         standarSubmit: false, //Como es falso es llamada parcial,
         defaultType: 'textfield', //Todos los controles son inputtext a menos que indiquen lo contrario
         items:[{
@@ -80,8 +80,6 @@ Ext.onReady(function(){
                 }
             }
         }]
-    
     })
-
 })
 

@@ -8,6 +8,7 @@ $autos=$query->getAutos();
 </ul>
 </nav>
 <div class="autoscontainer">
+<div class="pintarTablaAutos"></div>
 <table class="autostable">
 <thead>
     <th>Marca</th>
