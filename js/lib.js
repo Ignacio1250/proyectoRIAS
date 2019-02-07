@@ -16,30 +16,32 @@ $("input").mouseenter(function(){
 
 });
 
+Ext.require([
+    'Ext.plugin.Viewport'
+]);
 function getPreview(param){
-    $( "#preview" ).dialog({
-        autoOpen: false,
-        show: {
-            effect: "slide", // probar fold, puff, scale, shake, slide
-            duration: 500
-        },
-        hide: {
-            effect: "shake", //probar scale, bounce, clip, drop, explode
-            duration: 1000
-        }
-        , modal: true
-    });
-
+   
+    var ventana;
     var llamada=$.get(
         '../controller/getDataCar.php', //URL
         { //Datos de envío
             placa : param
         }, 
-        function(datos) { //trabajo a realizar en caso de éxito
-                $('#preview').html("<img src='"+datos+"' with='200' height='200'/>");
+        function(datos) { //el parámetro es el objeto que invoca a la función
+            if (!ventana) {
+                ventana = new Ext.Window({
+                    //animateTarget : btn.el, //Elemento (nodo HTML) del botón, tiene un efecto visual
+                    html : "<img src='"+datos+"' with='200' height='200'/>",
+                    closeAction : 'hide',
+                    height : 200,
+                    width : 300,
+                    modal: true, //desactiva el resto de la página
+                    title: 'Dialoguito',
+                    constrain : true //si se limita a su contenedor o no
+                });
+            }
+            ventana.show(); //En este caso, sólo se crea una vez y se oculta/muestra
         });
-            
-        
 
         llamada.done(function() {
             console.log( "terminado" );
@@ -51,6 +53,6 @@ function getPreview(param){
                 console.log( "completado" );
             });
 
-                $( "#preview" ).dialog( "open" );
+                
             
 }
